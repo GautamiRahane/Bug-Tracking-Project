@@ -1,0 +1,31 @@
+connect 'jdbc:derby: C:\bugtrackproject\bugtrackdb;create=true;user=hsbc;password=hsbc123';
+
+connect 'jdbc:derby: C:\bugtrackproject\bugtrackdb;user=hsbc;password=hsbc123';
+
+drop table bugtable;
+drop table teamtable;
+drop table projecttable;
+drop table logintable;
+drop table usertable;
+______________________________________________________Creating tables_______________________________________________________
+
+create table usertable (userid int PRIMARY KEY GENERATED ALWAYS AS IDENTITY(Start with 1, Increment by 1), name varchar(25), email varchar(30), type varchar(15));
+
+create table logintable (email varchar(30) primary key, password varchar(20), userid int references usertable(userid));
+alter table logintable add lastlogindate date;
+alter table logintable add lastlogintime time;
+
+create table projecttable(projectid int PRIMARY KEY GENERATED ALWAYS AS IDENTITY(Start with 100, Increment by 1), projectname varchar(20),description varchar(40), startdate date, status varchar(15), managerid int);
+
+create table teamtable(projectid int references projecttable(projectid),userid int);
+
+create table bugtable (uniqueid int PRIMARY KEY GENERATED ALWAYS AS IDENTITY(Start with 1000, Increment by 1), title varchar(20),description varchar(40), projectid int references projecttable(projectid), createdby int, opendate date,assignedto int, markedforclosing varchar(6), closedby int,closedon date, status varchar(10),severitylevel varchar(10));
+
+create table projectmanager(managerid int primary key, noOfProjects int check (noOfProjects<=4));
+
+create table developer(developerid int primary key, noOfProjects int check (noOfProjects<=1));
+
+create table tester(testerid int primary key, noOfProjects int check (noOfProjects<=2));
+
+---------------------------------------------------------------------------------insertion----------------------------------------------------------------------------------------------
+insert into usertable values(DEFAULT,'harry','harry@gmail.com','project manager');
