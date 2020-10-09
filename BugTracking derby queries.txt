@@ -1,0 +1,45 @@
+connect 'jdbc:derby: C:\bugtrackproject\bugtrackdb;create=true;user=hsbc;password=hsbc123';
+
+connect 'jdbc:derby: C:\bugtrackproject\bugtrackdb;user=hsbc;password=hsbc123';
+
+_____________________________________
+#drop all the tables from before
+
+create table usertable (userid int PRIMARY KEY GENERATED ALWAYS AS IDENTITY(Start with 1, Increment by 1), name varchar(25), email varchar(30), type varchar(15), noOfProjects int);
+
+create table logintable (email varchar(30) primary key, password varchar(20), userid int unique references usertable(userid), lastlogindate date,lastlogintime time);
+
+create table projecttable(projectid int PRIMARY KEY GENERATED ALWAYS AS IDENTITY(Start with 100, Increment by 1), projectname varchar(20),description varchar(40), startdate date, status varchar(15), managerid int references usertable(userid));
+
+create table teamtable(projectid int references projecttable(projectid),userid int references usertable(userid), managerid int references usertable(userid));
+
+create table bugtable (uniqueid int PRIMARY KEY GENERATED ALWAYS AS IDENTITY(Start with 1000, Increment by 1), title varchar(20),description varchar(30), projectid int references projecttable(projectid), createdby int references usertable(userid), opendate date,assignedto int references usertable(userid), markedforclosing varchar(6), closedby int references usertable(userid),closedon date, status varchar(10),severitylevel varchar(10), remarks varchar(40));
+_____________________________________________________________________
+insert into usertable values(DEFAULT,'ron','ron@gmail.com','tester',0);
+insert into usertable values(default,'tom','tom@gmail.com','developer',0);
+insert into usertable values(default,'draco','draco@gmail.com','developer',0);
+insert into usertable values(default,'ginny','ginny@gmail.com','developer',0);
+insert into usertable values(default,'abc','abc@gmail.com','tester',0);
+insert into usertable values(DEFAULT,'harry','harry@gmail.com','project manager',0);
+
+insert into logintable values ('harry@gmail.com','root',5,default,default);
+insert into logintable values ('ron@gmail.com','root',1,default,default);
+insert into logintable values ('tom@gmail.com','root',2,default,default);
+insert into logintable values ('draco@gmail.com','root',3,default,default);
+insert into logintable values ('ginny@gmail.com','root',4,default,default);
+
+insert into projecttable values(default,'darkarts','defense against dark arts','10/01/2020','in-progress',5);
+insert into projecttable values(default,'herbology','crying roots','10/01/2020','in-progress',5);
+
+insert into teamtable values(100,1,5);
+insert into teamtable values(100,2,5);
+insert into teamtable values(100,3,5);
+insert into teamtable values(101,1,5);
+
+insert into bugtable values(default,'dementor','expecto patronum',100,5,'10/01/2020',null,'false',null,null,'open','critical',null);
+insert into bugtable values(default,'noise','ear muffs',101,5,'10/01/2020',null,'false',null,null,'open','critical',null);
+
+update usertable set noofprojects=2 where userid=5;
+update usertable set noofprojects=2 where userid=1;
+update usertable set noofprojects=1 where userid=2;
+update usertable set noofprojects=3 where userid=3;
