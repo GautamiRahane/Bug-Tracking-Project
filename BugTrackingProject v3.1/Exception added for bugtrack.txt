@@ -1,0 +1,2 @@
+exception handling-By hrishita and dharampreet
+new query for displaying only the testers assigned under same manager-by adrija
