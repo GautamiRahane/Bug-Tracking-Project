@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Oct 04 18:37:54 IST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0174-f3b9-cd89-000006d1fb00 
+on database directory C:\bugtrackproject\bugtrackdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/Adrija/Desktop/hsbc%20project/BugTrackingProject/WebContent/WEB-INF/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_131-b11
+user.dir=C:\Users\Adrija\Desktop\hsbc project\BugTrackingProject
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

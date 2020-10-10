@@ -1,0 +1,125 @@
+package com.code.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
+
+
+public class RegisterDaoImpl implements RegisterDao {
+
+	static Connection conn;
+	static PreparedStatement pgetbyemail,pgetbypass;//creating prepared statemnets
+	static {
+		conn=DBUtil.getMyConnection(); //object of DButil
+		try {
+			//query to verify email and role existence
+			pgetbyemail=conn.prepareStatement("select * from usertable where email=? and type=?");
+		
+		
+		} catch (SQLException e) {
+			System.out.println("table error");
+			e.printStackTrace();
+		}
+		
+		
+		try {
+			
+			//query to store user given password in logintable
+<<<<<<< HEAD
+			pgetbypass=conn.prepareStatement(" insert into  logintable(email,password,userid)  values(?,?,?)");
+=======
+			pgetbypass=conn.prepareStatement("update  logintable  set password=? where email=?");
+>>>>>>> e689bf121814b774e8ea0005b583ea56cd1cf23e
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
+	
+	//method for verifying existence of email and role given by user for registeration
+<<<<<<< HEAD
+	public 	int emailExistValidation(String email, String role) {
+		int id=0;
+=======
+	public boolean emailExistValidation(String email, String role) {
+		boolean status=false;
+>>>>>>> e689bf121814b774e8ea0005b583ea56cd1cf23e
+		try {
+			pgetbyemail.setString(1, email);
+			pgetbyemail.setString(2, role);
+			ResultSet rs=pgetbyemail.executeQuery();
+			System.out.println(email);
+			System.out.println(role);
+			//returns boolean status for validation of email and role existence
+			if(rs.next()) {
+<<<<<<< HEAD
+				System.out.println("USERID :"+rs.getString(1)+"\t"+rs.getString(3)+"\twith role as\t"+rs.getString(4)+"\teixsts");
+				System.out.println("email  validated");
+				id=Integer.parseInt(rs.getString(1));//Retrieving the user id and returning for validation
+=======
+				System.out.println(rs.getString(3)+"\twith role as\t"+rs.getString(4)+"\teixsts");
+				System.out.println("email  validated");
+				status=true;
+>>>>>>> e689bf121814b774e8ea0005b583ea56cd1cf23e
+			}
+				
+				
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+<<<<<<< HEAD
+		return id;
+=======
+		return status;
+>>>>>>> e689bf121814b774e8ea0005b583ea56cd1cf23e
+	}
+	
+	
+	
+	//method for storing password in logintable
+	//returns boolean status of password storage
+	@Override
+<<<<<<< HEAD
+	public boolean storePassword(String pass,String email,int userid) {
+=======
+	public boolean storePassword(String pass,String email) {
+>>>>>>> e689bf121814b774e8ea0005b583ea56cd1cf23e
+		boolean status=false;
+		int i=0;
+				try { 
+					
+<<<<<<< HEAD
+					pgetbypass.setString(1,email);
+					pgetbypass.setString(2,pass);
+					pgetbypass.setLong(3,userid);
+=======
+					pgetbypass.setString(1,pass);
+					pgetbypass.setString(2,email);
+>>>>>>> e689bf121814b774e8ea0005b583ea56cd1cf23e
+					 i=pgetbypass.executeUpdate();
+					if(i!=0) {
+						status=true;
+					}
+					
+				
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+			return status;
+		
+	}
+
+
+
+}

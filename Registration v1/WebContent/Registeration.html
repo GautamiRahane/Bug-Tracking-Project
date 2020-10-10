@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="./js/validateRegister.js"></script>
+</head>
+<body>
+<form action="register"  method="post" onsubmit="return validateRegister()">
+<table>
+  <tr><td>Email : </td><td><input type="email" name="email" id="email" autofocus required placeholder="Enter Email"></td><td></td></tr>
+  <tr><td>Role : </td> 
+  <td><select name="role" >
+  <option value="manager" >Manager</option>
+<<<<<<< HEAD
+  <option value="tester" selected>Tester</option>
+  <option value="developer">Developer</option>
+  </select></td></tr>&nbsp;&nbsp;
+
+  <tr><td>Password : </td><td><input type="text" name="pass" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" required placeholder="strong password"></td><td></td></tr>
+ <tr>Note: Enter a strong password containing atleast 1 number 1 lowercase & 1 uppercase charcater and 1 special character</tr>
+  <tr><td>Confirm Password: </td><td><input type="text" name="cpass" id="cpass" ></td><td><p id="errpass">  </p></td></tr>
+ 
+  <tr><td></td><td><button type="submit" name="btn" id="sub" " value="reg">Register</button>
+  <button type="reset" name="btn" id="reset" value="cancel">Cancel</button></td></tr>
+ </table>
+=======
+  <option value="Tester" selected>Tester</option>
+  <option value="Developer">Developer</option>
+  </select></td></tr>&nbsp;&nbsp;
+  <tr><td>Password : </td><td><input type="text" name="pass" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" required placeholder="Enter Password"></td><td></td></tr>
+  <tr><td>Confirm Password: </td><td><input type="text" name="cpass" id="cpass" ></td><td><p id="errpass">  </p></td></tr>
+  </table>
+  <tr><td></td><td><button type="submit" name="btn" id="sub" " value="reg">Register</button>
+  <button type="reset" name="btn" id="reset" value="cancel">Cancel</button></td></tr>
+
+>>>>>>> e689bf121814b774e8ea0005b583ea56cd1cf23e
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Users>
+	<User>
+		<name>user1</name>
+		<email>user1@email.com</email>
+		<type>developer</type>
+	</User>
+	<User>
+		<name>user2</name>
+		<email>user2@email.com</email>
+		<type>manager</type>
+	</User>
+	<User>
+		<name>user3</name>
+		<email>user3@email.com</email>
+		<type>tester</type>
+	</User>
+</Users>
